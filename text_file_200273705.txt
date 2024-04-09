@@ -1,0 +1,17 @@
+Description of data and justification of steps
+The first step in tidying the data was to read the data and make the first row in the table into the names of the columns to aid in the readability of the data. 
+The column named “ZZtrack_name89” was changed to “track_name” as this is a more sensible title that is consistent with the other titles in the subset. 
+As the dataset is going to be used to compare “danceability” the column named “danceability_energy” was split into two individual columns to separate the values in them. This change aids in making the dataset more user friendly for its intended analysis. 
+According to the dictionary provided, “valence”, “energy”, “danceability” and “acousticness” are supposed to be values from 0-1, each of these columns was searched for any values outside of this.  All of these columns were found to have values that fit in the specified range detailed in the dictionary provided.
+In the “mode” column there was a typo and lots of the cells had a capital A in them, these were removed so that all the variables are numerical as stated in the dictionary.  By removing the typo, the data is more consistent with the rest of the table. 
+All column names and variables needed to be changed to lowercase to ensure the readability and consistency. It helps to avoid any errors that can be caused by case sensitivity. This is known as snakecase and also includes replacing spaces with underscores. 
+The “grep” function was used to search for misspelling in Shakira, Janis Joplin, Four Owls, Taylor Swift and Bad Bunny by searching for artist names containing certain letters or groups of letters. The typo “tailor swift” was found and corrected to “taylor swift”.  The correction of typos is beneficial for making the data user friendly.
+To aid in readability and streamlining of the columns the last 5 columns were merged into a “genre” and “subgenre” column. By removing unnecessary columns, the structure of the dataset has been simplified and each variable has a cell. 
+To search for any duplicate data “any_dupe” was used, which gave the output “FALSE”, indicating that there were no duplicate values that needed to be deleted. To double check, “n_distinct” was also used to check for duplication in the rows. The output was [1] 1800, which is the number of rows in the dataset and shows that there are no duplicated rows.  
+Track_album_release_date needed to be split into release_year, release_month and release_day as there were missing values in the columns. These missing dates could then be imputed from the original track_album_release_date. The original column “track_album_release_date” was then deleted. 
+In the “release_year” column, there is a typo where the year is 3000. After searching for some of the release dates of these albums, a sample of these incorrect dates had completely different release years and therefore cannot be corrected to the same year. Instead all “3000” typos have been replaced with “NA”.
+“glimpse” was used to check the format of the columns matched with those in the dictionary, which they all did apart from the new date columns. 
+“Track_id”, “track_album_id” and “playlist_id” have the same values in them and have been merged into one column renamed “song_id”. 
+The final step was to reorganise the columns to be in the same order as they appeared in the dictionary. All new columns that didn’t exist prior to cleaning were put in a sensible order. 
+The code was then exported into a csv.  
+
